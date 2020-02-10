@@ -52,39 +52,39 @@ class Page {
 
     $html = <<<HTML
 
-<!DOCTYPE html>
-<html>
+      <!DOCTYPE html>
+      <html>
 
-  <head>
+        <head>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132901038-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132901038-2"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-      gtag('config', 'UA-132901038-2');
-    </script>
+            gtag('config', 'UA-132901038-2');
+          </script>
 
-    $head
-  </head>
+          $head
+        </head>
 
-  <body>
-    <header>
-      $header
-    </header>
-    <main>
-      $this->content
-    </main>
-    <footer>
-      $footer
-    </footer>
-  </body>
+        <body>
+          <header>
+            $header
+          </header>
+          <main>
+            $this->content
+          </main>
+          <footer>
+            $footer
+          </footer>
+        </body>
 
-</html>
+      </html>
 
-HTML;
+    HTML;
 
     return $html;
   }

@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:7.4-apache
 
 # Activate the rewrite_module
 RUN a2enmod rewrite
@@ -24,7 +24,7 @@ RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
       opcache \
       pdo_mysql \
       pdo_pgsql \
-      zip \
+      #zip \
     ;
 
 # Install SASS tools

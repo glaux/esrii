@@ -55,24 +55,23 @@ class Footer {
     $updated = $this->updated();
 
     $footer = <<<HTML
+    <div class="footer">
+      <div class="footerbox">
 
-<div class="footer">
-  <div class="footerbox">
+        <ul class="footernavigation">
+          <li>
+            <p>
+                <span style="padding: 0 14px;">PHP playgrond</span>
+              | <span style="padding: 0 14px;">Test and ideas</span>
+              | <span style="padding: 0 14px;">Last updated: $updated</span>
 
-    <ul class="footernavigation">
-      <li>
-        <p>
-            <span style="padding: 0 14px;">PHP playgrond</span>
-          | <span style="padding: 0 14px;">Test and ideas</span>
-          | <span style="padding: 0 14px;">Last updated: $updated</span>
+            </p>
+          </li>
+        </ul>
 
-        </p>
-      </li>
-    </ul>
-
-  </div>
-</div>
-HTML;
+      </div>
+    </div>
+    HTML;
 
     return $footer;
   }
@@ -83,12 +82,8 @@ HTML;
     // $updated = $this->updated();
 
     $footer = <<<HTML
-
-
         <!-- <div class="center"><p>esrii 2019</p></div> -->
-
-
-HTML;
+    HTML;
 
     return $footer;
   }

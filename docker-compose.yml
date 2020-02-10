@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+
+  app:
+    image: ${IMAGE_NAME}
+    container_name: ${CONTAINER_NAME}
+    build:
+      context: .
+      # We have to explicitly add arguments to the build context
+      # args:
+      #   - TZ=${TZ}
+    env_file:
+      - .env
+    expose:
+      - "80"
+    volumes:
+      - ./public_html:/var/www/html
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    restart: always
+
+networks:
+  default:
+    external:
+      name: webproxy
+# https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion

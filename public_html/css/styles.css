@@ -1,0 +1,592 @@
+/* line 37, ../scss/styles.scss */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #484848;
+}
+
+/* line 47, ../scss/styles.scss */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 52, ../scss/styles.scss */
+main {
+  flex: 1 0 auto;
+}
+
+/* line 61, ../scss/styles.scss */
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 66, ../scss/styles.scss */
+section {
+  position: relative;
+  color: white;
+  padding: 3rem 0;
+}
+/* line 71, ../scss/styles.scss */
+section > * {
+  margin: 1rem auto;
+  max-width: 1000px;
+  width: calc(100vw - 80px);
+}
+/* line 77, ../scss/styles.scss */
+section.bannersection {
+  padding: 0;
+}
+/* line 79, ../scss/styles.scss */
+section.bannersection h1 {
+  font-weight: 300;
+}
+
+/* line 85, ../scss/styles.scss */
+li {
+  padding: 0.5rem;
+}
+
+/* line 89, ../scss/styles.scss */
+a {
+  color: #1C9DD8;
+  text-decoration: none;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: linear, ease-in;
+}
+/* line 95, ../scss/styles.scss */
+a:hover {
+  color: #E7067E;
+}
+
+/* line 100, ../scss/styles.scss */
+hr {
+  border: 0;
+  width: 70%;
+  text-align: center;
+  margin: 3em auto 3em;
+  color: #004282;
+  background-color: #004282;
+  height: 1px;
+}
+
+/* line 110, ../scss/styles.scss */
+h1 {
+  color: #1C9DD8;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* line 116, ../scss/styles.scss */
+h2, h3 {
+  font-weight: 300;
+}
+
+/* line 120, ../scss/styles.scss */
+table {
+  text-align: center;
+  font-style: italic;
+}
+/* line 123, ../scss/styles.scss */
+table td, table th {
+  height: 45px;
+  padding: 2px 10px;
+}
+/* line 127, ../scss/styles.scss */
+table td:nth-child(1), table th:nth-child(1) {
+  border: 1px solid black;
+  text-align: left;
+  font-style: normal;
+}
+/* line 132, ../scss/styles.scss */
+table td:nth-child(2), table th:nth-child(2) {
+  background-color: #ccddff;
+}
+/* line 135, ../scss/styles.scss */
+table td:nth-child(3), table th:nth-child(3) {
+  background-color: #dddddd;
+}
+/* line 138, ../scss/styles.scss */
+table td:nth-child(4), table th:nth-child(4) {
+  background-color: gold;
+}
+/* line 141, ../scss/styles.scss */
+table td:nth-child(5), table th:nth-child(5) {
+  background-color: silver;
+}
+
+/* line 146, ../scss/styles.scss */
+footer {
+  height: 3rem;
+  background: linear-gradient(to bottom, #1C9DD8, #1680c8);
+}
+
+/* line 152, ../scss/styles.scss */
+.dark {
+  background: #1C9DD8;
+  color: #f1f1f1;
+}
+
+/* line 157, ../scss/styles.scss */
+.light {
+  background: white;
+  color: #484848;
+}
+/* line 161, ../scss/styles.scss */
+.light h2 {
+  color: #E7067E;
+}
+
+/* The styling for the static div. */
+/* line 167, ../scss/styles.scss */
+.grey {
+  color: #8e8e8e;
+  background: #484848;
+}
+/* line 170, ../scss/styles.scss */
+.grey p {
+  font-size: 80%;
+}
+
+/* line 178, ../scss/styles.scss */
+.diagram {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+@media all and (min-width: 800px) {
+  /* line 178, ../scss/styles.scss */
+  .diagram {
+    flex-wrap: nowrap;
+    margin: 0 -1rem;
+    padding: 3.5rem 0;
+    background-image: url("../img/bgr/arrow2.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+}
+@media all and (max-width: 800px) {
+  /* line 178, ../scss/styles.scss */
+  .diagram {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media all and (min-width: 800px) and (max-width: 1250px) {
+  /* line 178, ../scss/styles.scss */
+  .diagram {
+    font-size: 80%;
+  }
+}
+
+/* line 201, ../scss/styles.scss */
+.box {
+  background-color: #00a8ac;
+  color: #f1f1f1;
+  padding: 1rem;
+  margin: 1rem;
+  height: 200px;
+  border-radius: 2rem;
+  border: 3px solid #f1f1f1;
+  flex: 1 0 15%;
+}
+/* line 209, ../scss/styles.scss */
+.box h1 {
+  color: #f1f1f1;
+  font-size: 140%;
+}
+/* line 213, ../scss/styles.scss */
+.box ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+/* line 217, ../scss/styles.scss */
+.box li {
+  padding-left: 0;
+}
+@media all and (max-width: 800px) {
+  /* line 201, ../scss/styles.scss */
+  .box {
+    width: 80%;
+  }
+}
+@media all and (min-width: 800px) and (max-width: 1250px) {
+  /* line 201, ../scss/styles.scss */
+  .box {
+    width: 80%;
+    margin: 0.5rem;
+    height: 170px;
+  }
+}
+
+/* line 237, ../scss/styles.scss */
+.picture-profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 2rem;
+  min-height: 11rem;
+}
+@media all and (max-width: 800px) {
+  /* line 237, ../scss/styles.scss */
+  .picture-profile {
+    flex-wrap: wrap;
+  }
+}
+/* line 249, ../scss/styles.scss */
+.picture-profile img {
+  width: 9rem;
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+}
+/* line 255, ../scss/styles.scss */
+.picture-profile figcaption > p:first-child {
+  margin-top: 0;
+}
+
+/* line 260, ../scss/styles.scss */
+.logobox {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+/* line 265, ../scss/styles.scss */
+.logobox figure {
+  margin: 2rem auto;
+  min-width: 350px;
+}
+
+/* line 274, ../scss/styles.scss */
+.cap-noncap {
+  font-size: 132%;
+}
+
+/* line 278, ../scss/styles.scss */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* line 282, ../scss/styles.scss */
+.banner div {
+  margin-left: 5rem;
+}
+/* line 285, ../scss/styles.scss */
+.banner figure {
+  flex: 0 0 auto;
+}
+/* line 288, ../scss/styles.scss */
+.banner img {
+  width: 100%;
+}
+/* line 291, ../scss/styles.scss */
+.banner h1, .banner h2 {
+  color: #0d2747;
+}
+/* line 294, ../scss/styles.scss */
+.banner h1 {
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+/* line 298, ../scss/styles.scss */
+.banner h3 {
+  margin-top: 5px;
+}
+/* line 301, ../scss/styles.scss */
+.banner p {
+  color: #e5e5e5;
+}
+@media all and (max-width: 800px) {
+  /* line 278, ../scss/styles.scss */
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* line 307, ../scss/styles.scss */
+  .banner figure {
+    display: block;
+  }
+  /* line 311, ../scss/styles.scss */
+  .banner div {
+    margin-left: 0;
+  }
+}
+
+/* line 317, ../scss/styles.scss */
+.jumbotron {
+  padding: 0;
+  min-height: 465px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+@media all and (max-width: 800px) {
+  /* line 317, ../scss/styles.scss */
+  .jumbotron {
+    padding: 1rem 0;
+  }
+}
+/* line 331, ../scss/styles.scss */
+.jumbotron .attribution {
+  position: absolute;
+  font-size: small;
+  bottom: 0rem;
+  right: 1rem;
+  width: auto;
+  color: #dddddd;
+  z-index: 1;
+}
+/* line 339, ../scss/styles.scss */
+.jumbotron .attribution a {
+  color: #dddddd;
+  padding: 3px 10px;
+}
+/* line 342, ../scss/styles.scss */
+.jumbotron .attribution a:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50px;
+}
+
+/* line 363, ../scss/styles.scss */
+.minipage {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1920px;
+}
+
+/* line 381, ../scss/styles.scss */
+input[type=search] {
+  -webkit-appearance: none;
+}
+
+/* line 384, ../scss/styles.scss */
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+/* line 388, ../scss/styles.scss */
+.tripplebox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0 -1rem;
+}
+/* line 398, ../scss/styles.scss */
+.tripplebox > div {
+  flex: 1 1 30%;
+  margin: 1rem;
+}
+/* line 404, ../scss/styles.scss */
+.tripplebox img {
+  margin-bottom: 1rem;
+}
+/* line 408, ../scss/styles.scss */
+.tripplebox ul {
+  padding: 0;
+  list-style-type: none;
+}
+/* line 414, ../scss/styles.scss */
+.tripplebox li {
+  padding: 0.5rem 0;
+}
+/* line 416, ../scss/styles.scss */
+.tripplebox li p {
+  margin: 0;
+  padding: 0;
+  font-size: 110%;
+}
+/* line 421, ../scss/styles.scss */
+.tripplebox li h6 {
+  font-size: 80%;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+/* line 430, ../scss/styles.scss */
+.tripplebox h1 {
+  margin: 0 auto 2rem;
+}
+/* line 435, ../scss/styles.scss */
+.tripplebox figure {
+  flex: 0 1 350px;
+}
+/* line 438, ../scss/styles.scss */
+.tripplebox figure img {
+  width: 40%;
+  margin: 0;
+}
+@media all and (max-width: 800px) {
+  /* line 388, ../scss/styles.scss */
+  .tripplebox {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* line 484, ../scss/styles.scss */
+.slicknav_menu {
+  display: none;
+  background: linear-gradient(to bottom, #1C9DD8, #1680c8);
+}
+@media all and (max-width: 800px) {
+  /* line 484, ../scss/styles.scss */
+  .slicknav_menu {
+    display: block;
+  }
+}
+/* line 492, ../scss/styles.scss */
+.slicknav_menu .slicknav_btn {
+  background-color: #1680c8;
+}
+/* line 496, ../scss/styles.scss */
+.slicknav_menu .slicknav_menutxt {
+  display: none;
+}
+/* line 500, ../scss/styles.scss */
+.slicknav_menu .slicknav_icon {
+  margin: 0;
+}
+
+/* line 507, ../scss/styles.scss */
+[role=navigation] {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to bottom, #1C9DD8, #1680c8);
+  width: 100%;
+  z-index: 1;
+  position: relative;
+}
+@media all and (max-width: 800px) {
+  /* line 507, ../scss/styles.scss */
+  [role=navigation] {
+    display: none;
+  }
+}
+/* line 519, ../scss/styles.scss */
+[role=navigation] a {
+  color: white;
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+  line-height: 3rem;
+  left: 0;
+  top: 0;
+}
+/* line 535, ../scss/styles.scss */
+[role=navigation] .current {
+  background: #E7067E;
+}
+/* line 539, ../scss/styles.scss */
+[role=navigation] ul {
+  display: flex;
+  max-width: 1000px;
+  width: calc(100vw - 80px);
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+/* line 548, ../scss/styles.scss */
+[role=navigation] ul > * {
+  flex: 1 1 auto;
+}
+/* line 553, ../scss/styles.scss */
+[role=navigation] li {
+  text-align: center;
+  display: block;
+  float: left;
+  padding: 1rem;
+  position: relative;
+  transition-duration: 0.5s;
+  height: 1rem;
+}
+/* line 576, ../scss/styles.scss */
+[role=navigation] li:hover,
+[role=navigation] li:focus-within {
+  background: #E7067E;
+}
+/* line 581, ../scss/styles.scss */
+[role=navigation] ul li ul {
+  position: absolute;
+  width: 100%;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+  left: 0;
+  top: 3rem;
+}
+/* line 601, ../scss/styles.scss */
+[role=navigation] ul li:hover > ul,
+[role=navigation] ul li:focus-within > ul,
+[role=navigation] ul li ul:hover,
+[role=navigation] ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+}
+/* line 612, ../scss/styles.scss */
+[role=navigation] ul li ul li {
+  clear: both;
+  float: none;
+  background: #1C9DD8;
+}
+/* line 621, ../scss/styles.scss */
+[role=navigation] ul ul ul {
+  top: 0;
+  left: 100%;
+}
+
+/* line 630, ../scss/styles.scss */
+.center {
+  text-align: center;
+}
+
+/* line 631, ../scss/styles.scss */
+.clear {
+  clear: both;
+}
+
+/* line 632, ../scss/styles.scss */
+.rounded {
+  border-radius: 20px;
+}
+
+/* line 633, ../scss/styles.scss */
+.inline {
+  display: inline-block;
+}
+
+/* line 634, ../scss/styles.scss */
+.floatleft {
+  float: left;
+}
+
+/* line 635, ../scss/styles.scss */
+.floatright {
+  float: right;
+}
+
+/* line 636, ../scss/styles.scss */
+.seeme {
+  color: #f07010;
+}
+
+/* line 637, ../scss/styles.scss */
+.smalltext {
+  font-size: 70%;
+}

@@ -10,7 +10,7 @@ merchantability or fitness for a particular purpose.
 
 See the file LICENSE-MIT.md for details.
 
-3rd party libraries and the site content including images are exempt. This includes, but is not nessecarily limited to, the contents of the directories (and their sub directories): ```public_html/img```, ```public_html/pages```, ```public_html/pdf```, ```public_html/vendor```, ```public_html/vendor_js``` and ```public_html/vendor_css```. For 3rd party scripts, see the included licence information. For images, written prose and other media files you must seek written permission from the original creators for reuse outside the esrii organisation.
+3rd party libraries and the site content including images are exempt. This includes, but is not nessecarily limited to, the contents of the directories (and their sub directories): ```public_html/img```, ```public_html/pages```, ```public_html/pdf```, ```public_html/vendor```, ```public_html/vendor_js``` and ```public_html/vendor_css```. For 3rd party scripts, see their included licence information in the source file. For images, written prose and other media files you must seek written permission from the original creators for reuse outside the esrii organisation.
 
 ### Installation
 

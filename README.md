@@ -26,9 +26,9 @@ Run ```docker-compose up``` in the project root to bring the site online. Most c
 
 ### Development
 
-If developing on the remote machine, it is recommended to clone the project twice, one development and one production version. Change the ```.env``` file in dev to have virtual host https://development.esriiYYYY.org and make changes here. When working correctly, make a commit with ```git commit -am "some description of the changes here"``` from the command line followed by ```git push```. 
+If developing on the remote machine, it is recommended to clone the project twice, one development and one production version. Change the ```.env``` file in *development* to have the VIRTUAL_HOST: https://development.esriiYYYY.org. When the edit is complete, make a commit with ```git commit -am "some description of the changes here"``` from the command line followed by ```git push``` to upload to github. 
 
-Change directory to *production* and run a ```git pull``` command. 
+Change the directory to *production* and run a ```git pull``` command to make the changes live. 
 
 Visual Studio Code has an extension for remote workspaces which make this workflow very easy without having a development environment set up on a local machine (i.e. having docker installed).
 

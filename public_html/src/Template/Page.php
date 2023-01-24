@@ -1,56 +1,60 @@
 <?php
 
-Namespace Triangle\Template;
+namespace Triangle\Template;
 
-Use Triangle\Core\MenuItem;
-Use Triangle\Core\Head;
+use Triangle\Core\MenuItem;
+use Triangle\Core\Head;
 
-class Page {
+class Page
+{
+    protected $content = '';
+    protected $menu_item;
 
-  protected $content = '';
-  protected $menu_item;
-
-  static function create() {
-    return new self;
-  }
-
-  function setMenuItem(MenuItem $menu_item) {
-    $this->menu_item = $menu_item;
-    $this->loadContent();
-    return $this;
-  }
-
-  function loadContent() {
-    $filename = $this->menu_item->getPath();
-    if ( file_exists($filename) ) {
-      $stream = file_get_contents($filename);
-      if ( $stream ) {
-        if ( $this->menu_item->getExtension() === 'html' ) {
-          $this->content = file_get_contents($filename);
-        }
-        if ( $this->menu_item->getExtension() === 'php' ) {
-          ob_start();
-          require $filename;
-          $this->content = ob_get_clean();
-        }
-      }
+    public static function create()
+    {
+        return new self();
     }
-  }
 
-  public function build() {
+    public function setMenuItem(MenuItem $menu_item)
+    {
+        $this->menu_item = $menu_item;
+        $this->loadContent();
+        return $this;
+    }
 
-    $head = Head::create()
-      ->setPageName(join(' - ', [
+    public function loadContent()
+    {
+        $filename = $this->menu_item->getPath();
+        if (file_exists($filename)) {
+            $stream = file_get_contents($filename);
+            if ($stream) {
+                if ($this->menu_item->getExtension() === 'html') {
+                    $this->content = file_get_contents($filename);
+                }
+                if ($this->menu_item->getExtension() === 'php') {
+                    ob_start();
+                    require $filename;
+                    $this->content = ob_get_clean();
+                }
+            }
+        }
+    }
+
+    public function build()
+    {
+
+        $head = Head::create()
+        ->setPageName(join(' - ', [
         getenv('SITE_TITLE'),
         $this->menu_item->getPrettyName(),
-      ]))
-      ->build()
-    ;
-    $header = Header::create()->build();
-    $footer = Footer::create()->build();
-    // d($footer);
+        ]))
+        ->build()
+        ;
+        $header = Header::create()->build();
+        $footer = Footer::create()->build();
+      // d($footer);
 
-    $html = <<<HTML
+        $html = <<<HTML
 
       <!DOCTYPE html>
       <html>
@@ -86,6 +90,6 @@ class Page {
 
     HTML;
 
-    return $html;
-  }
+        return $html;
+    }
 }

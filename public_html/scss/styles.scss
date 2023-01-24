@@ -17,30 +17,29 @@ $silver: silver;
 $purple: #7f5796;
 $cyan: #3d9db3;
 
-// Six shades of grey                  Hex:      General usage:
+// Seven shades of grey                  Hex:      General usage:
 $verylightgrey: rgb(241, 241, 241); // #f1f1f1 - Backgrounds
-$lightergrey:   rgb(229, 229, 229); // #e5e5e5 - Content Frame
-$lightgrey:     rgb(221, 221, 221); // #dddddd - Shadows
-$grey:          rgb(142, 142, 142); // #8e8e8e - Borders
-$devilgrey:     rgb(102, 102, 102); // #666    - Logo, kontrolikoner
-$darkgrey:      rgb( 72,  72,  72); // #484848 - Text in headers, menus
-$verydarkgrey:  rgb( 17,  17,  17); // #111111 - Main text
+$lightergrey: rgb(229, 229, 229); // #e5e5e5 - Content Frame
+$lightgrey: rgb(221, 221, 221); // #dddddd - Shadows
+$grey: rgb(142, 142, 142); // #8e8e8e - Borders
+$devilgrey: rgb(102, 102, 102); // #666    - Logo, kontrolikoner
+$darkgrey: rgb(72, 72, 72); // #484848 - Text in headers, menus
+$verydarkgrey: rgb(17, 17, 17); // #111111 - Main text
 
 // Text colors
-$pink:          rgb(255,  45,  85); // #ff2d55 - Link active
+$pink: rgb(255, 45, 85); // #ff2d55 - Link active
 // $purple:        rgb( 88,  86, 214); // #5856d6 - Link visited
 // $orange:        rgb(255, 149,   0); // #ff9500 - Message link-text
 
 $page-width: 1000px;
 $breakpoint: 800px;
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  // font-family: monospace;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  // line-height: 1;
   color: $darkgrey;
 }
 
@@ -54,10 +53,6 @@ main {
 
 }
 
-// ::-webkit-scrollbar {
-//     display: none;
-//   }
-
 figure {
   margin: 0;
   padding: 0;
@@ -68,7 +63,7 @@ section {
   color: white;
   padding: 3rem 0;
 
-  > * {
+  >* {
     margin: 1rem auto;
     max-width: $page-width;
     width: calc(100vw - 80px);
@@ -76,6 +71,7 @@ section {
 
   &.bannersection {
     padding: 0;
+
     h1 {
       font-weight: 300;
     }
@@ -89,9 +85,10 @@ li {
 a {
   color: $esrii-blue;
   text-decoration: none;
-  transition-property: all;// color, text;
+  transition-property: all; // color, text;
   transition-duration: 300ms;
   transition-timing-function: linear, ease-in;
+
   &:hover {
     color: $esrii-red;
   }
@@ -113,32 +110,45 @@ h1 {
   text-transform: uppercase
 }
 
-h2, h3 {
+h2,
+h3 {
   font-weight: 300;
 }
 
 table {
   text-align: center;
   font-style: italic;
-  td, th {
+
+  td,
+  th {
     height: 45px;
     padding: 2px 10px;
   }
-  td:nth-child(1), th:nth-child(1) {
+
+  td:nth-child(1),
+  th:nth-child(1) {
     border: 1px solid black;
     text-align: left;
     font-style: normal;
   }
-  td:nth-child(2), th:nth-child(2) {
+
+  td:nth-child(2),
+  th:nth-child(2) {
     background-color: $partner-blue;
   }
-  td:nth-child(3), th:nth-child(3) {
+
+  td:nth-child(3),
+  th:nth-child(3) {
     background-color: $platinum;
   }
-  td:nth-child(4), th:nth-child(4) {
+
+  td:nth-child(4),
+  th:nth-child(4) {
     background-color: $gold;
   }
-  td:nth-child(5), th:nth-child(5) {
+
+  td:nth-child(5),
+  th:nth-child(5) {
     background-color: $silver;
   }
 }
@@ -150,14 +160,14 @@ footer {
 }
 
 .dark {
-  background: $esrii-blue;//$oceandark;
+  background: $esrii-blue; //$oceandark;
   color: $verylightgrey;
 }
 
 .light {
-  // font-size: 200%;
   background: white;
   color: $darkgrey;
+
   h2 {
     color: $esrii-red;
   }
@@ -167,18 +177,17 @@ footer {
 .grey {
   color: $grey;
   background: $darkgrey;
+
   p {
     font-size: 80%;
   }
-  // h1 {
-  //   color: $verylightgrey;
-  // }
 }
 
 .diagram {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
   @media all and (min-width: $breakpoint) {
     flex-wrap: nowrap;
     margin: 0 -1rem;
@@ -188,11 +197,13 @@ footer {
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
+
   @media all and (max-width: $breakpoint) {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
   }
+
   @media all and (min-width: $breakpoint) and (max-width: 1250px) {
     font-size: 80%;
   }
@@ -206,27 +217,27 @@ footer {
   height: 200px;
   border-radius: 2rem;
   border: 3px solid $verylightgrey;
+
   h1 {
     color: $verylightgrey;
     font-size: 140%;
   }
+
   ul {
     padding-left: 0;
     list-style-type: none;
   }
+
   li {
     padding-left: 0;
   }
+
   flex: 1 0 15%;
-  // @media all and (min-width: $breakpoint) {
-  //   // opacity: 0.5;
-  //   flex: 1 0 15%;
-  // }
+
   @media all and (max-width: $breakpoint) {
-    // opacity: 0.5;
-    // flex: 1 0 100%;
     width: 80%;
   }
+
   @media all and (min-width: $breakpoint) and (max-width: 1250px) {
     width: 80%;
     margin: 0.5rem;
@@ -240,19 +251,21 @@ footer {
   align-items: flex-start;
   margin-top: 2rem;
   min-height: 11rem;
+
   @media all and (max-width: $breakpoint) {
     flex-wrap: wrap;
   }
+
   // strong {
   //   color: $esrii-red;
   // }
   img {
-    // height: 12rem;
     width: 9rem;
     margin-right: 3rem;
     margin-bottom: 1rem;
   }
-  figcaption > p:first-child {
+
+  figcaption>p:first-child {
     margin-top: 0;
   }
 }
@@ -262,8 +275,8 @@ footer {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+
   figure {
-    // margin-bottom: 25px;
     margin: 2rem auto;
     min-width: 350px;
   }
@@ -279,35 +292,45 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   div {
     margin-left: 5rem;
   }
+
   figure {
     flex: 0 0 auto;
   }
+
   img {
     width: 100%;
   }
-  h1, h2 {
+
+  h1,
+  h2 {
     color: $aublue;
   }
+
   h1 {
     margin-top: 25px;
     margin-bottom: 0px;
   }
+
   h3 {
     margin-top: 5px;
   }
+
   p {
     color: $lightergrey;
   }
+
   @media all and (max-width: $breakpoint) {
     flex-direction: column;
     align-items: flex-start;
+
     figure {
       display: block;
-      // width: 50%;
     }
+
     div {
       margin-left: 0;
     }
@@ -317,28 +340,28 @@ footer {
 .jumbotron {
   padding: 0;
   min-height: 465px;
+
   @media all and (max-width: $breakpoint) {
     padding: 1rem 0;
   }
-  // color: $verylightgrey;
-  // // padding: 3rem 0;
-  // h1 {
-  //   color: $verylightgrey;
-  // }
+
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+
   .attribution {
     position: absolute;
     font-size: small;
     bottom: 0rem;
     right: 1rem;
     width: auto;
-    color: $lightgrey;//$esrii-blue;
+    color: $lightgrey; //$esrii-blue;
     z-index: 1;
+
     a {
       color: $lightgrey;
       padding: 3px 10px;
+
       &:hover {
         color: white;
         background-color: rgba(0, 0, 0, 0.6);
@@ -346,17 +369,6 @@ footer {
         // background-color: $esrii-blue;
       }
     }
-    // &:before{
-    //   content: " ";
-    //   position: absolute;
-    //   left: 0;
-    //   right: 0;
-    //   top: 0;
-    //   bottom: 0;
-    //   z-index: -1;
-    //   box-shadow: inset 0 0 0 100px rgba(170,170,170,1);
-    //   filter: blur(10px);
-    // }
   }
 }
 
@@ -366,23 +378,6 @@ footer {
   justify-content: space-around;
   flex-wrap: wrap;
   max-width: 1920px;
-  // > :nth-child(n) {
-  //   width: 50%;
-  //   @media all and (max-width: $breakpoint4) {
-  //     width: 100%;
-  //   }
-  //   figcaption {
-  //     width: 80%;
-  //     margin: 0 auto;
-  //   }
-  // }
-}
-
-input[type=search] {
-  -webkit-appearance: none;
-}
-input[type=search]::-webkit-search-cancel-button {
-  -webkit-appearance: searchfield-cancel-button;
 }
 
 .tripplebox {
@@ -391,13 +386,10 @@ input[type=search]::-webkit-search-cancel-button {
   justify-content: space-between;
   text-align: center;
 
-  //https://stackoverflow.com/questions/20626685/better-way-to-set-distance-between-flexbox-items
-
   margin: 0 -1rem;
 
-  > div {
+  >div {
     flex: 1 1 30%;
-    // min-width: 250px;
     margin: 1rem;
   }
 
@@ -406,35 +398,34 @@ input[type=search]::-webkit-search-cancel-button {
   }
 
   ul {
-    // text-align: left;
     padding: 0;
     list-style-type: none;
   }
 
   li {
     padding: 0.5rem 0;
+
     p {
       margin: 0;
       padding: 0;
       font-size: 110%;
     }
+
     h6 {
       font-size: 80%;
       font-weight: 100;
-      // font-style: italic;
       margin: 0;
       padding: 0;
     }
   }
 
-  h1 { //&.center h1 {
+  h1 {
     margin: 0 auto 2rem;
-    // min-height: 3rem;
   }
 
   figure {
     flex: 0 1 350px;
-    // width: 200px;
+
     img {
       width: 40%;
       margin: 0;
@@ -447,38 +438,6 @@ input[type=search]::-webkit-search-cancel-button {
     align-items: center;
   }
 }
-
-// .logobox {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   flex-wrap: wrap;
-//   margin: 5rem -1rem;
-//   > img {
-//     max-width: 120px;
-//     // height: 100%;
-//     flex: 0 0 120px;
-//     margin: 1rem;
-//   }
-//   @media all and (max-width: $breakpoint) {
-
-//     > img {
-//       max-width: 120px;
-//       width: 120px;
-//     }
-//     // flex-direction: column;
-//   }
-// }
-
-// @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-//   .logobox img[src$=".svg"] {
-//     height: 100%;
-//   }
-//   .banner img[src$=".svg"] {
-//     height: 100%;
-//   }
-// }
-
 
 // Slicknav mobile menu
 .slicknav_menu {
@@ -520,9 +479,9 @@ input[type=search]::-webkit-search-cancel-button {
     color: white;
     outline: none;
     text-decoration: none;
-    display:inline-block;
-    width:100%;
-    height:100%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
 
     // Linkspanner
@@ -545,7 +504,8 @@ input[type=search]::-webkit-search-cancel-button {
     position: relative;
     margin: 0;
     padding: 0;
-    > * {
+
+    >* {
       flex: 1 1 auto;
     }
   }
@@ -598,8 +558,8 @@ input[type=search]::-webkit-search-cancel-button {
     // of the container must be explicitly set.
   }
 
-  ul li:hover > ul,
-  ul li:focus-within > ul,
+  ul li:hover>ul,
+  ul li:focus-within>ul,
   ul li ul:hover,
   ul li ul:focus {
     // display: block;
@@ -619,120 +579,42 @@ input[type=search]::-webkit-search-cancel-button {
   // Without it the elements end up on top of eachother.
   // Test that the menu doesn't go outside the screen.
   ul ul ul {
-    top:0;
-    left:100%
+    top: 0;
+    left: 100%
   }
 
 }
 
 
 
-.center { text-align: center; }
-.clear { clear: both; }
-.rounded { border-radius: 20px; }
-.inline { display: inline-block; }
-.floatleft { float: left; }
-.floatright { float: right; }
-.seeme { color: #f07010; }
-.smalltext { font-size: 70%; }
+.center {
+  text-align: center;
+}
 
+.clear {
+  clear: both;
+}
 
+.rounded {
+  border-radius: 20px;
+}
 
+.inline {
+  display: inline-block;
+}
 
+.floatleft {
+  float: left;
+}
 
-// https://alligator.io/css/pure-css-parallax/
+.floatright {
+  float: right;
+}
 
-// body {
-//   transform: translateZ(0);
-// }
+.seeme {
+  color: #f07010;
+}
 
-// .wrapper {
-//   /* The height needs to be set to a fixed value for the effect to work.
-//    * 100vh is the full height of the viewport. */
-//   height: 100vh;
-//   /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
-//   overflow-x: hidden;
-//   /* Enable scrolling on the page. */
-//   overflow-y: scroll;
-//   -webkit-overflow-scrolling: touch;
-//   /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
-//   perspective: 2px;
-//   transform-style: preserve-3d;
-
-//   @media all and (max-width: $breakpoint) {
-//     perspective: 0;
-//   }
-// }
-
-// .parallax-group {
-//   height: 100%;
-//   z-index: -2;
-//   position: relative;
-//   transform-style: preserve-3d;
-//   height: 25vw;
-// }
-
-// .parallax {
-//   height: 20vw;
-//   // For text formatting.
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   text-align: center;
-//   h1 {
-//     color: $aublue;
-//   }
-// }
-
-// .parallax::after {
-//   // Display and position the pseudo-element
-//   content: " ";
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   height: 100vh;
-//   // Move the pseudo-element back away from the camera,
-//   //  * then scale it back up to fill the viewport.
-//   //  * Because the pseudo-element is further away, it appears to move more slowly, like in real life.
-//   transform: translateZ(-1px) scale(1.6);
-//   // Force the background image to fill the whole element.
-//   background-size: 100%;
-//   // Keep the image from overlapping sibling elements.
-//   z-index: -1;
-//   background-position: center;
-//   background-repeat: no-repeat;
-
-//   @media all and (max-width: $breakpoint) {
-//     transform: none;
-//     height: 100%;
-//     // position: relative;
-//   }
-// }
-
-// .bg1::after {
-//   background-image: url('../img/bgr/low-poly-1239778_1920.jpg');
-//   z-index: -3;
-// }
-
-// .bg2::after {
-//   background-image: url('../img/bgr/sky2.jpg');
-//   z-index: -2;
-//   // For this background in particular
-//   top: -300px;
-//   @media all and (max-width: $breakpoint) {
-//     top: 0;
-//   }
-// }
-
-// .bg3::after {
-//   background-image: url('../img/bgr/arrow.svg');
-//   z-index: 0;
-
-//   // For this background in particular
-//   // top: -300px;
-//   // @media all and (max-width: $breakpoint) {
-//   //   top: 0;
-//   // }
-// }
+.smalltext {
+  font-size: 70%;
+}

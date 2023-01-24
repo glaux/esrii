@@ -1,29 +1,30 @@
 <?php
 
-Namespace Triangle\Template;
+namespace Triangle\Template;
 
-Use Triangle\Core\Menu;
+use Triangle\Core\Menu;
 
-class Header {
+class Header
+{
+    public const FILE_NAME = 'pages/_.header.html';
 
-  const FILE_NAME = 'pages/_.header.html';
-
-  static function create() {
-    return new self;
-  }
-
-  function build() {
-    $r = [];
-    if ( file_exists(self::FILE_NAME) ) {
-      $stream = file_get_contents(self::FILE_NAME);
-      if ( $stream ) {
-        $r['static_content'] = file_get_contents(self::FILE_NAME);
-      }
+    public static function create()
+    {
+        return new self();
     }
 
-    $r['menu'] = Menu::create()->build();
+    public function build()
+    {
+        $r = [];
+        if (file_exists(self::FILE_NAME)) {
+            $stream = file_get_contents(self::FILE_NAME);
+            if ($stream) {
+                $r['static_content'] = file_get_contents(self::FILE_NAME);
+            }
+        }
 
-    return join('', $r);
-  }
+        $r['menu'] = Menu::create()->build();
 
+        return join('', $r);
+    }
 }

@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.2-apache
 
 # Activate the rewrite_module
 RUN a2enmod rewrite
@@ -8,16 +8,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
       libjpeg-dev \
       libpng-dev \
       libpq-dev \
+      libzip-dev \
       curl \
-      wget \
-      vim \
       git \
       unzip \
-      libzip-dev \
       zip \
-      default-mysql-client \
       ruby-full \
-    && rm -rf /var/lib/apt/lists/*;
+    ;
 
 # From the official docker image
 RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \

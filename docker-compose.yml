@@ -1,15 +1,12 @@
-version: '3.3'
+name: ${SYSTEM_NAME}
 
 services:
 
   app:
-    image: ${IMAGE_NAME}
-    container_name: ${CONTAINER_NAME}
+    image: esrii/${SYSTEM_NAME}
+    container_name: ${SYSTEM_NAME}
     build:
       context: .
-      # We have to explicitly add arguments to the build context
-      # args:
-      #   - TZ=${TZ}
     env_file:
       - .env
     expose:
@@ -22,6 +19,5 @@ services:
 
 networks:
   default:
-    external:
-      name: webproxy
+    name: webproxy
 # https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion

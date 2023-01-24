@@ -15,145 +15,151 @@ use Triangle\Template\Page;
  *
  * @see http://www.degraeve.com/reference/urlencoding.php
 */
-class Router {
-
-  static function create() {
-    return new static;
-  }
-
-  function getFront() {
-    $front = MenuItem::create()
-      ->setTitle(getenv('SITE_TAGLINE'))
-      ->setPath('pages/_.front.html')
-      ->setExtension('html')
-    ;
-    return $front;
-  }
-
-  function get404() {
-    $error404 = MenuItem::create()
-      ->setTitle('404 - Page not found')
-      ->setPath('pages/_.404.html')
-      ->setExtension('html')
-    ;
-    return $error404;
-  }
-
-  function deliverPage() {
-
-    $input = $this->parseInputString();
-
-    if ( $input[0] === 'pdf' ) {
-      ServeFile::create()->pdf($input[0]);
+class Router
+{
+    public static function create()
+    {
+        return new static();
     }
 
-    return Page::create()
-      ->setMenuItem($this->getMenuItem())
-      ->build()
-    ;
-  }
-
-  function getMenuItem() {
-
-    // If no uri is found, return the front page
-    $parts = $this->parseInputString();
-    if ( empty($parts) ) {
-      return $this->getFront();
+    public function getFront()
+    {
+        $front = MenuItem::create()
+        ->setTitle(getenv('SITE_TAGLINE'))
+        ->setPath('pages/_.front.html')
+        ->setExtension('html')
+        ;
+        return $front;
     }
 
-    // If we are on a subpage, search the menu tree
-    $menu_item = $this->getMenuTree();
-    while ( ! empty($parts) ) {
-      $request = array_shift($parts);
-      $child = $this->getMatchingChild($menu_item, $request);
-      if ( ! empty($child) ) {
-        $menu_item = $child;
-      }
-      else {
-        // d('error: No valid page is found');
+    public function get404()
+    {
+        $error404 = MenuItem::create()
+        ->setTitle('404 - Page not found')
+        ->setPath('pages/_.404.html')
+        ->setExtension('html')
+        ;
+        return $error404;
+    }
+
+    public function deliverPage()
+    {
+
+        $input = $this->parseInputString();
+
+        if ($input[0] === 'pdf') {
+            ServeFile::create()->pdf($input[0]);
+        }
+
+        return Page::create()
+        ->setMenuItem($this->getMenuItem())
+        ->build()
+        ;
+    }
+
+    public function getMenuItem()
+    {
+
+        // If no uri is found, return the front page
+        $parts = $this->parseInputString();
+        if (empty($parts)) {
+            return $this->getFront();
+        }
+
+        // If we are on a subpage, search the menu tree
+        $menu_item = $this->getMenuTree();
+        while (! empty($parts)) {
+            $request = array_shift($parts);
+            $child = $this->getMatchingChild($menu_item, $request);
+            if (! empty($child)) {
+                $menu_item = $child;
+            } else {
+                // d('error: No valid page is found');
+                return $this->get404();
+            }
+        }
+
+        // If the last valid child is a directory, we deliver a 404.
+        // This could be changed to a child listing in the future.
+        if ($menu_item->isDir()) {
+            // d('error: this is a directory');
+            return $this->get404();
+        }
+
+        // This is just a sanity check, it should never be possible for resolveUrl()
+        // to deliver a non-existing file, since it scans the directory on each run.
+        if (file_exists($menu_item->getPath())) {
+            return $menu_item;
+        }
+
+        // d('error: the file doesn\'t exist!');
         return $this->get404();
-      }
     }
 
-    // If the last valid child is a directory, we deliver a 404.
-    // This could be changed to a child listing in the future.
-    if ( $menu_item->isDir() ) {
-      // d('error: this is a directory');
-      return $this->get404();
+    /**
+     * This has the side effect of making all slashes in the uri count as
+     * exactly one.
+     */
+    public function parseInputString()
+    {
+        $uri = urldecode(filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_STRING));
+        return preg_split('%/%', $uri, null, PREG_SPLIT_NO_EMPTY);
     }
 
-    // This is just a sanity check, it should never be possible for resolveUrl()
-    // to deliver a non-existing file, since it scans the directory on each run.
-    if ( file_exists($menu_item->getPath()) ) {
-      return $menu_item;
+    public function getMatchingChild(MenuItem $item, $request)
+    {
+        foreach ($item as $child) {
+            if ($request == $child->getTitle()) {
+                return $child;
+            }
+        }
     }
 
-    // d('error: the file doesn\'t exist!');
-    return $this->get404();
-  }
+    public function buildMenuTree($dir = null)
+    {
+        $items = scandir($dir);
 
-  /**
-   * This has the side effect of making all slashes in the uri count as
-   * exactly one.
-   */
-  function parseInputString() {
-    $uri = urldecode(filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_STRING));
-    return preg_split('%/%', $uri, null, PREG_SPLIT_NO_EMPTY);
-  }
+        unset($items[array_search('.', $items, true)]);
+        unset($items[array_search('..', $items, true)]);
 
-  function getMatchingChild(MenuItem $item, $request) {
-    foreach ( $item as $child ) {
-      if ( $request == $child->getTitle() ) {
-        return $child;
-      }
-    }
-  }
+        $r = [];
 
-  function buildMenuTree($dir = null) {
-    $items = scandir($dir);
+      // prevent empty ordered elements
+        if (count($items) < 1) {
+            return $r;
+        }
 
-    unset($items[array_search('.', $items, true)]);
-    unset($items[array_search('..', $items, true)]);
+        foreach ($items as $item) {
+            $parts = preg_split('%\.%', $item, null, PREG_SPLIT_NO_EMPTY);
 
-    $r = [];
+          // pages enumerated with an underscore are ignored
+            if ($parts[0] === '_') {
+                break;
+            }
 
-    // prevent empty ordered elements
-    if ( count($items) < 1 ) {
-      return $r;
-    }
+            $menu_item = MenuItem::create()
+            ->setOrder((int) array_shift($parts))
+            ->setPath($dir . '/' . $item)
+            ;
+            if ($menu_item->isDir()) {
+                $menu_item->setChildren($this->buildMenuTree($menu_item->getPath()));
+            } else {
+                $menu_item->setExtension(array_pop($parts));
+            }
+            $menu_item->setTitle(join('.', $parts));
 
-    foreach ( $items as $item ) {
-      $parts = preg_split('%\.%', $item, null, PREG_SPLIT_NO_EMPTY);
+            $r[] = $menu_item;
+        }
 
-      // pages enumerated with an underscore are ignored
-      if ( $parts[0] === '_' ) {
-        break;
-      }
-
-      $menu_item = MenuItem::create()
-        ->setOrder((int) array_shift($parts))
-        ->setPath($dir.'/'.$item)
-      ;
-      if ( $menu_item->isDir() ) {
-        $menu_item->setChildren($this->buildMenuTree($menu_item->getPath()));
-      }
-      else {
-        $menu_item->setExtension(array_pop($parts));
-      }
-      $menu_item->setTitle(join('.', $parts));
-
-      $r[] = $menu_item;
+        return $r;
     }
 
-    return $r;
-  }
-
-  function getMenuTree() {
-    // Create the top level item
-    $menu_item = $this->get404()
-      ->setChildren($this->buildMenuTree(getenv('MENU_DIR')))
-    ;
-    return $menu_item;
-  }
-
+    public function getMenuTree()
+    {
+      // Create the top level item
+        $menu_item = $this->get404()
+        ->setChildren($this->buildMenuTree(getenv('MENU_DIR')))
+        ;
+        return $menu_item;
+    }
 }

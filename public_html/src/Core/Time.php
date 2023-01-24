@@ -2,14 +2,15 @@
 
 namespace Triangle\Core;
 
-class Time {
+class Time
+{
+    public static function create()
+    {
+        return new static();
+    }
 
-  static function create() {
-    return new static;
-  }
-
-  static function get($filename) {
-    return date ("Y-m-d H:i", filemtime($filename));
-  }
-
+    public static function get($filename)
+    {
+        return date("Y-m-d H:i", filemtime($filename));
+    }
 }
